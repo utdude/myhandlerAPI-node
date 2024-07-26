@@ -2,6 +2,13 @@ const express = require('express')
 const jwt = require('jsonwebtoken');
 const app = express()
 var md5 = require('md5');
+const corsConfig = {
+    origin: '',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+}
+app.use(cors(corsConfig))
+app.options("", cors(corsConfig))
 
 require('dotenv').config()
 
@@ -67,7 +74,7 @@ app.post("/Register", (req,res) =>{
 
     if(!email || !password){
 
-        return res.json({ error: "1", msg: "please fill all the fields!" });
+        return res.json({ "error": "1", "msg": "please fill all the fields!" });
 
     }else {
 
@@ -85,12 +92,12 @@ app.post("/Register", (req,res) =>{
 
                     if(err) throw err;
 
-                    return res.json({error:'0', msg:r});
+                    return res.json({"error":'0', "msg":r});
 
                 })
 
             }else{
-                return res.json({error:'1', msg:''+email+' has already been registred with us.</br>Please try another email or login.'});
+                return res.json({"error":'1', "msg":''+email+' has already been registred with us.</br>Please try another email or login.'});
             }
 
         })
