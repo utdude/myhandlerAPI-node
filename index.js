@@ -1,6 +1,8 @@
 const express = require('express')
 const jwt = require('jsonwebtoken');
 const app = express()
+require("cors")
+
 var md5 = require('md5');
 const corsConfig = {
     origin: '',
