@@ -1,7 +1,7 @@
 const express = require('express')
 const jwt = require('jsonwebtoken');
 const app = express()
-require("cors")
+const cors = require("cors")
 
 var md5 = require('md5');
 const corsConfig = {
@@ -9,7 +9,7 @@ const corsConfig = {
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE']
 }
-app.use(cors(corsConfig))
+app.use(cors())
 app.options("", cors(corsConfig))
 
 require('dotenv').config()
