@@ -122,15 +122,13 @@ app.post("/getHandles", (req,res) =>{
 
             if(err) throw err;
 
-            console.log(result);
-
             if(result.length > 0){
 
 
                 return res.json({ error: "0", msg: result });
 
             }else{
-                return res.json({ error: "1", msg: "Wrong credentials!" });
+                return res.json({ error: "1", msg: "You have no Handles right now.." });
             }
 
         });
